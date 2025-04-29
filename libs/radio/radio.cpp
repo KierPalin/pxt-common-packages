@@ -21,7 +21,7 @@
 using namespace pxt;
 
 #ifndef MICROBIT_RADIO_MAX_PACKET_SIZE
-#define MICROBIT_RADIO_MAX_PACKET_SIZE          32
+#define MICROBIT_RADIO_MAX_PACKET_SIZE          128
 #endif
 
 #ifndef DEVICE_RADIO_MAX_PACKET_SIZE
@@ -226,6 +226,7 @@ CODAL_RADIO* getRadio() {
 
         registerWithDal(DEVICE_ID_RADIO, DEVICE_RADIO_EVT_DATAGRAM, body);
         getRadio()->datagram.recv(); // wake up read code
+        DMESG("radio onDataReceived");
 #endif       
     }
 
