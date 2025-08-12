@@ -6,15 +6,16 @@ namespace pxt {
 class WKeyValueStorage {
 #ifdef CODAL_NVMCONTROLLER
     CODAL_NVMCONTROLLER controller;
-#else
-    NVMController controller;
-#endif
     KeyValueStorage storage;
+#endif
   public:
 
     WKeyValueStorage()
+#ifdef CODAL_NVMCONTROLLER
     : controller()
-    , storage(controller) {
+    , storage(controller)
+#endif
+    {
     }
 
     bool isSupported() {
