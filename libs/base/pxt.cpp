@@ -390,11 +390,11 @@ void checkStr(bool cond, const char *msg) {
 
 #ifdef PXT_VM
 int templateHash() {
-    return *(int*)&vmImg->infoHeader->hexHash;
+    return *(int *)&vmImg->infoHeader->hexHash;
 }
 
 int programHash() {
-    return *(int*)&vmImg->infoHeader->programHash;
+    return *(int *)&vmImg->infoHeader->programHash;
 }
 
 int getNumGlobals() {
@@ -448,7 +448,6 @@ void exec_binary(unsigned *pc) {
 
     globals = (TValue *)app_alloc(sizeof(TValue) * getNumGlobals());
     memset(globals, 0, sizeof(TValue) * getNumGlobals());
-
     // can be any valid address, best in RAM for speed
     globals[0] = (TValue)&globals;
 
@@ -458,7 +457,6 @@ void exec_binary(unsigned *pc) {
              ":( Failed partial flash");
 
     uintptr_t startptr = (uintptr_t)bytecode;
-
     startptr += 64; // header
 
     initPerfCounters();
